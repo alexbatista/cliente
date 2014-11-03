@@ -21,26 +21,25 @@ public class SystemController {
 
 	@RequestMapping("/inicio")
 	public String execute(){
-		
-		Client client = Client.create();
-		WebResource wr = client.resource("http://localhost:8080/journey");
-		List<Lugar> lugares = wr.path("lugar").get(new GenericType<List<Lugar>>(){});
-		System.out.println(lugares);
-	
 	
 		return "index";
 	}
 	
+	@RequestMapping("/registrar")
+	public String registrar(){
+		return "lugares";
+	}
 	@RequestMapping("/resource")
 	public void Resources(){
 		
 		Client client = Client.create();
-		WebResource wr = client.resource("http://localhost:8080/journey/cliente");
-		List<Lugar> lugares = wr.path("lugar").get(new GenericType<List<Lugar>>(){});
+		WebResource wr = client.resource("http://localhost:8080/journey/lugar");
+		List<Lugar> lugares = wr.get(new GenericType<List<Lugar>>(){});
+		System.out.println(lugares);
 	
 	}
 	public static void main(String[] args) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("lugarDB"); 
+		/*EntityManagerFactory factory = Persistence.createEntityManagerFactory("lugarDB"); 
 		EntityManager em = factory.createEntityManager();
 		Lugar p = new Lugar();
 		p.setLatitude(23344.23);
@@ -48,7 +47,12 @@ public class SystemController {
 		p.setNome("Segundo lugar");
 		em.getTransaction().begin();
 		em.persist(p); 
-		em.getTransaction().commit(); 
+		em.getTransaction().commit(); */
+		
+		Client client = Client.create();
+		WebResource wr = client.resource("http://localhost:8080/journey/lugar");
+		List<Lugar> lugares = wr.get(new GenericType<List<Lugar>>(){});
+		System.out.println(lugares);
 		
 	}
 }
