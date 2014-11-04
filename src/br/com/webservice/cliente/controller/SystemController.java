@@ -6,12 +6,15 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.GenericType;
 import com.sun.jersey.api.client.WebResource;
+import com.sun.jersey.api.client.config.ClientConfig;
+import com.sun.jersey.api.client.config.DefaultClientConfig;
 
 import br.com.webservice.cliente.bean.Lugar;
 
@@ -21,7 +24,6 @@ public class SystemController {
 
 	@RequestMapping("/inicio")
 	public String execute(){
-	
 		return "index";
 	}
 	
@@ -30,13 +32,16 @@ public class SystemController {
 		return "lugares";
 	}
 	@RequestMapping("/resource")
-	public void Resources(){
+	public String Resources(){
 		
-		Client client = Client.create();
-		WebResource wr = client.resource("http://localhost:8080/journey/lugar");
-		List<Lugar> lugares = wr.get(new GenericType<List<Lugar>>(){});
-		System.out.println(lugares);
+		 String uri = "http://localhost:8080/journey/lugar";
+		    ClientConfig config = new DefaultClientConfig();
+		    Client client = Client.create(config);
+		    WebResource service = client.resource(uri);
+		    String json = service.accept("application/json").get(String.class);
+		    System.out.println("Output as json: " + json);
 	
+		    return "index";
 	}
 	public static void main(String[] args) {
 		/*EntityManagerFactory factory = Persistence.createEntityManagerFactory("lugarDB"); 
@@ -49,10 +54,13 @@ public class SystemController {
 		em.persist(p); 
 		em.getTransaction().commit(); */
 		
-		Client client = Client.create();
-		WebResource wr = client.resource("http://localhost:8080/journey/lugar");
-		List<Lugar> lugares = wr.get(new GenericType<List<Lugar>>(){});
-		System.out.println(lugares);
+		 String uri = "http://localhost:8080/journey/lugar";
+		 ClientConfig config = new DefaultClientConfig();
+		 Client client = Client.create(config);
+		 WebResource service = client.resource(uri);
+		 String json = service.accept("application/json").get(String.class);
+		 System.out.println("Output as json: " + json);
+		    
 		
 	}
 }
