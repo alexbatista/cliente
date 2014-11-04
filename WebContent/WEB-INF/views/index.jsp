@@ -30,7 +30,8 @@
         <![endif]-->
 
             <header>
-                <img id="logo_small" src="<c:url value="img/journey.png" />" alt="journey" >
+                <img id="logo_small" src="<c:url value="/img/journey.png" />" alt="journey" />
+                
                 <menu>
                     <ul>
                         <li><a href="">Inicio</a>
