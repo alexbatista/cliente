@@ -1,0 +1,72 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic);
+ body {
+	font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+}
+
+body,
+header {
+    position: relative;
+}
+
+header {
+    background: #eee;
+    height: 6em;
+    /*    margin-bottom: 1em;*/
+    border-bottom: .3em solid #6b7fac;
+    box-shadow: 0 .1em .2em rgba(0, 0, 0, .8);
+}
+header {
+    width: 100%;
+    font-size: 1.5em;
+}
+
+menu {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 1em;
+}
+menu,
+menu ul {
+    height: 5.6em;
+    display: table;
+}
+ul li,
+menu > form,
+form > input {
+    display: table-cell;
+    vertical-align: middle;
+}
+menu ul li {
+    padding-left: .5em;
+    padding-right: .5em;
+    list-style: none;
+}
+menu ul li a {
+    padding: 2.3em .5em 2.3em .5em;
+    text-decoration: none;
+    text-shadow: 1px 1px 1px rgba(123, 122, 122, 0.24);
+}
+menu ul li a:hover {
+    background-color: #4f8cc1;
+}
+ul li a:active {
+    color: #fff;
+}
+#logo_small {
+    position: absolute;
+    left: 50%;
+    margin-top: .5em;
+    margin-left: -7.5em;
+    width: 15em;
+    /*    margin: .2em 0;*/
+}
+
+
+
+
+#perfil{
+	min-width: 20em;
+	max-width: 25em;
+}

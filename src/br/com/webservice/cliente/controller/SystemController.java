@@ -31,6 +31,12 @@ public class SystemController {
 	public String registrar(){
 		return "lugares";
 	}
+	
+	@RequestMapping("perfil")
+	public String getPerfil(){
+		return "perfil";
+	}
+	
 	@RequestMapping("/resource")
 	public String Resources(){
 		

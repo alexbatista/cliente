@@ -1,106 +1,302 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-        <!DOCTYPE html>
-        <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-        <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-        <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-        <!--[if gt IE 8]><!-->
-        <html class="no-js">
-        <!--<![endif]-->
+<!DOCTYPE html>
+<html>
 
-        <head>
-            <meta charset="utf-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <title>Journey - Explore o mundo</title>
-            <meta name="description" content="Esta é a descrição do meu site">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <!-- Standard Meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-            <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- Site Properities -->
+    <title>Journey - Explore o Mundo</title>
 
-            <link rel="stylesheet" type="text/css" href="<c:url value="/css/normalize.css" />" />
-            <link rel="stylesheet" type="text/css" href="<c:url value="/css/main.css" />" />
-            <link rel="stylesheet" type="text/css" href="<c:url value="/css/reset.css" />" />
-            <link rel="stylesheet" type="text/css" href="<c:url value="/css/style.css" />" />
-            <script src="<c:url value="/js/vendor/modernizr-2.6.2.min.js" />"></script>
-        </head>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700' rel='stylesheet' type='text/css'>
 
-        <body>
-            <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+    <link rel="stylesheet" type="text/css" href="<c:url value="css/semantic.min.css"/>" >
+    <link rel="stylesheet" type="text/css" href="<c:url value="css/homepage.css" />" >
+	<link rel="stylesheet" type="text/css" href="<c:url value="css/jquery.remodal.css" />" >
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+    <script src="<c:url value="javascript/semantic.min.js"/>"></script>
+    <script src="<c:url value="javascript/homepage.js" />" ></script>
+	<script src="<c:url value="javascript/jquery.remodal.js" />" ></script>
+</head>
 
-            <header>
-                <img id="logo_small" src="<c:url value="/img/journey.png" />" alt="journey" />
-                
-                <menu>
-                    <ul>
-                        <li><a href="">Inicio</a>
-                        </li>
-                        <li><a href="">Explore</a>
-                        </li>
-                        <li><a href="">Depoimentos</a>
-                        </li>
-                    </ul>
-                    <form action="#" method="post">
-                        <input type="search" placeholder="Digite o local">
-                        <input type="submit" value="">
-                    </form>
-                </menu>
-            </header>
-            <div id="main">
-                <!--        <img id="logo" src="img/journey.png" alt="journey">-->
-                <h1>
-            Conheça o mundo!
-        </h1>
-                <p>Multos an incurreret se labore, incididunt sunt fugiat aut quae a quis nam ullamco, nescius sempiternum ita proident non ne ipsum ita multos, sed multos nisi ita aliquip ne a iis quae quid quis de si officia an occaecat. Quis deserunt a appellat, nescius tamen ingeniis arbitror, mentitum ubi commodo an fore o excepteur. Offendit sint velit an dolor. Velit tractavissent arbitror duis vidisse, offendit reprehenderit ut probant si de commodo se doctrina, ex amet voluptate. Quae voluptate ne appellat. O noster mandaremus, nescius irure nulla nam velit.</p>
+<body id="home" class="remodal-bg">
+    <div class="ui  page grid masthead segment">
+        <div class="column">
+            <div class=" secondary pointing ui menu">
+                <div class="right menu">
+                    <div class="ui top right pointing mobile dropdown link item">
+                        Menu
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <a class="item">Lugares</a>
+                            <a class="item">Pessoas</a>
+                            <a class="item">Top 10</a>
+                        </div>
+                    </div>
+                    <div class="ui dropdown link item">
+                        Explorar
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <a class="item">Lugares</a>
+                            <a class="item">Pessoas</a>
+                            <a class="item">Top 10</a>
+                        </div>
+                    </div>
+                    <a class="item">Comunidade</a>
+                    <a class="item" href="#modal">Login</a>                    
+                </div>
             </div>
-            <footer>
-                <span>Todos os direitos reservados - Journey&copy;</span>
-                <aside>
-                    <ul>
-                        <li>
-                            <a>
-                                <img src="<c:url value="/img/facebook-2-48.png"/>" alt="facebook" title="Acompanhe nossa página">
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                                <img src="<c:url value="/img/twitter-48.png"/>" alt="twitter" title="Siga-nos no twitter">
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                                <img src="<c:url value="/img/instagram-4-48.png"/>" alt="instagram" title="Siga-nos no instagram">
-                            </a>
-                        </li>
-                    </ul>
-                </aside>
-            </footer>
-            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-            <script>
-                window.jQuery || document.write('<script src="<c:url value="/js/vendor/jquery-1.10.2.min.js" />"><\/script>')
-            </script>
-            <script src="<c:url value="/js/plugins.js" />"></script>
-            <script src="<c:url value="/js/main.js"/>"></script>
-        </body>
+            <img src="<c:url value="images/journey.png"/>" class="image">
+            <div class="ui hidden transition information">
+                <h1 class="ui inverted header">
+            Conheça o Mundo!
+        </h1>
+                <p>Com o Journey você pode ir além.</p>
+                <div class="large basic  animated fade ui button">
+                    <div class="visible content">Junte-se a nós!</div>
+                    <div class="hidden content">Registre-se agora</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui page grid overview segment">
+        <div class="ui two wide column"></div>
+        <div class="twelve wide column">
+            <div class="ui three column center aligned stackable divided grid">
+                <div class="column">
+                    <div class="ui icon header">
+                        <i class="circular calendar link icon"></i>
+                        Planeje
+                    </div>
+                    <p>Com o journey você pode realizar aquelas férias tão sonhadas</p>
+                    <p><a class="ui teal right labeled icon button" href="#">Saiba mais <i class="right long arrow icon"></i></a>
+                    </p>
+                </div>
+                <div class="column">
+                    <div class="ui icon header">
+                        <i class="circular shield link icon"></i>
+                        Segurança
+                    </div>
+                    <p>Aqui você pode escolher os lugares mais bem votados</p>
+                    <p><a class="ui teal right labeled icon button" href="#">Ver lugares <i class="right long arrow icon"></i></a>
+                    </p>
+                </div>
+                <div class="column">
+                    <div class="ui icon header">
+                        <i class="circular map marker link icon"></i>
+                        Contribua
+                    </div>
+                    <p>Dê seu feedback sobre sua viagem</p>
+                    <p><a class="ui teal right labeled icon button" href="#">Contribua <i class="right long arrow icon"></i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        </html>
+    <div class="ui inverted page grid stackable relaxed feature segment">
+        <div class="row">
+            <div class="column">
+                <h1 class="center aligned ui header">
+         Planeje sua viagem da forma mais segura!
+        </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="ten wide column">
+                <h2 class="ui header">Somos uma comunidade</h2>
+                <p>Dolore nam cernantur. Te quis sint dolore vidisse non esse id iudicem. Multos hic nostrud ad fugiat a velit litteris te quibusdam ea anim consequat arbitror, eu ex quorum dolore tamen. Admodum duis ingeniis appellat, enim an ita quem pariatur, non sint exercitation, cupidatat illustriora iis quamquam nam admodum aut nulla arbitror, si te minim nostrud ubi minim id probant, sint offendit hic exercitation. Ubi ne irure fabulas, ea fugiat graviterque. Consequat et cillum, eram ut commodo o cillum qui cillum in quamquam, sint mandaremus quo dolor elit..</p>
+                <p>This and other tips can be found in our newsletter, amazing right?</p>
+                <div class="ui basic inverted animated button button">
+                    <div class="visible content">Saiba mais</div>
+                    <div class="hidden content"><i class="right arrow icon"></i>
+                    </div>
+                </div>
+                <div class="ui inverted section divider"></div>
+                <h3 class="ui header">Últimas atualizações</h3>
+                <div class="ui inverted animated selection list">
+                    <div class="item">
+                        Maceió - Excelente Lugar
+                        <div class="right floated">Jan 20, 2023</div>
+                    </div>
+                    <div class="item">
+                        Lugar1 - alguma coisa sobre o lugar
+                        <div class="right floated">Jan 1, 2023</div>
+                    </div>
+                    <div class="item">
+                        Lugar2 - alguma coisa sobre o lugar
+                        <div class="right floated">Dec 20, 2022</div>
+                    </div>
+                </div>
+            </div>
+            <div class="six wide column">
+                <div class="ui secondary form segment">
+                    <h3 class="ui header">Receba novidades sobre os lugares</h3>
+                    <p>Mantenha-se sempre atualizado, inscreva-se!</p>
+                    <div class="field">
+                        <div class="ui left icon action input">
+                            <i class="user icon"></i>
+                            <input name="email" type="text" placeholder="seuemail@email.com">
+                            <div class="ui teal submit button">Registrar-se</div>
+                        </div>
+                    </div>
+                    <div class="ui error message"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <!-- <!DOCTYPE html> -->
-        <!-- <html> -->
-        <!-- <head> -->
-        <!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> -->
-        <!-- <title>Journey - Explore o mundo!</title> -->
-        <!-- </head> -->
-        <!-- <body> -->
-        <!-- 	<form action="http://localhost:8080/journey/lugar" method="post"> -->
-        <!-- 			<label for="nome">Nome: </label> -->
-        <!-- 			<input type="text" name="nome" /> -->
-        <!-- 			<label for="latitude">Latitude: </label> -->
-        <!-- 			<input type="text" name="latitude" /> -->
-        <!-- 			<label for="longitude">Longitude: </label> -->
-        <!-- 			<input type="text" name="longitude" /> -->
-        <!-- 			<input type="submit" value="enviar"> -->
-        <!-- 	</form> -->
-        <!-- </body> -->
-        <!-- </html> -->
+    <div class="ui page grid stackable segment">
+        <div class="row">
+            <div class="column">
+                <h1 class="center aligned ui header">
+         Veja quem já planejou com a gente!
+        </h1>
+                <div class="ui horizontal divider"><i class="heart icon"></i>
+                </div>
+            </div>
+        </div>
+        <div class="center four column aligned row">
+            <div class="column">
+                <div class="ui text shape">
+                    <div class="sides">
+                        <div class="active side">
+                            <i class="huge circular github icon"></i>
+                        </div>
+                        <div class="side">
+                            <i class="huge circular facebook icon"></i>
+                        </div>
+                        <div class="side">
+                            <i class="huge circular maxcdn icon"></i>
+                        </div>
+                        <div class="side">
+                            <i class="huge circular pinterest icon"></i>
+                        </div>
+                        <div class="side">
+                            <i class="huge circular weibo icon"></i>
+                        </div>
+                        <div class="side">
+                            <i class="huge circular flickr icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui text shape">
+                    <div class="sides">
+                        <div class="side">
+                            <i class="huge circular github icon"></i>
+                        </div>
+                        <div class="side">
+                            <i class="huge circular facebook icon"></i>
+                        </div>
+                        <div class="active side">
+                            <i class="huge circular maxcdn icon"></i>
+                        </div>
+                        <div class="side">
+                            <i class="huge circular pinterest icon"></i>
+                        </div>
+                        <div class="side">
+                            <i class="huge circular weibo icon"></i>
+                        </div>
+                        <div class="side">
+                            <i class="huge circular flickr icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui text shape">
+                    <div class="sides">
+                        <div class="side">
+                            <i class="huge circular github icon"></i>
+                        </div>
+                        <div class="side">
+                            <i class="huge circular facebook icon"></i>
+                        </div>
+                        <div class="side">
+                            <i class="huge circular maxcdn icon"></i>
+                        </div>
+                        <div class="side">
+                            <i class="huge circular pinterest icon"></i>
+                        </div>
+                        <div class="active side">
+                            <i class="huge circular weibo icon"></i>
+                        </div>
+                        <div class="side">
+                            <i class="huge circular flickr icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui text shape">
+                    <div class="sides">
+                        <div class="side">
+                            <i class="huge circular github icon"></i>
+                        </div>
+                        <div class="side">
+                            <i class="huge circular facebook icon"></i>
+                        </div>
+                        <div class="side">
+                            <i class="huge circular maxcdn icon"></i>
+                        </div>
+                        <div class="side">
+                            <i class="huge circular pinterest icon"></i>
+                        </div>
+                        <div class="side">
+                            <i class="huge circular weibo icon"></i>
+                        </div>
+                        <div class="active side">
+                            <i class="huge circular flickr icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui inverted teal page grid segment">
+        <div class="ten wide column">
+            <div class="ui three column stackable grid">
+                <div class="column">
+                    <div class="ui header">Explorar</div>
+                    <div class="ui inverted link list">
+                        <a class="item">Pessoas</a>
+                        <a class="item">Lugares</a>
+                        <a class="item">Top 10</a>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="ui header">Community</div>
+                    <div class="ui inverted link list">
+                        <a class="item">BBS</a>
+                        <a class="item">Careers</a>
+                        <a class="item">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="six wide right floated aligned column">
+            <h3 class="ui header">Universidade Federal de Alagoas</h3>
+            <addr>
+                Instituto de Computação
+            </addr>
+            <p>(82) 0000-0000</p>
+        </div>
+    </div>
+<!--     Modal -->
+    <div class="remodal" data-remodal-id="modal">
+    <h1>Login</h1>
+    <p>Logue com o facebook ou com seu email</p>
+    <br>
+    <a class="remodal-cancel" href="#">Cancel</a>
+    <a class="remodal-confirm" href="#">OK</a>
+</div>
+</body>
+
+</html>
