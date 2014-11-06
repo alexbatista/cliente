@@ -41,6 +41,7 @@ $(document)
       })
     ;
 
+
     $('.ui.form')
       .form(validationRules, {
         on: 'blur'
@@ -50,7 +51,7 @@ $(document)
     $('.masthead .information')
       .transition('scale in')
     ;
-
+  
     setInterval(changeSides, 3000);
 
   })

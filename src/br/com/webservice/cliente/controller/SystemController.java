@@ -6,6 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,15 +39,21 @@ public class SystemController {
 		return "perfil";
 	}
 	
-	@RequestMapping("/resource")
-	public String Resources(){
+	@RequestMapping("resource")
+	public String Resources(Lugar lugar) throws JSONException{
+		
+		JSONObject obj = new JSONObject();
+		obj.put("nome", lugar.getNome());
+		obj.put("latitude",111);
+		obj.put("longitude", 222);
 		
 		 String uri = "http://localhost:8080/journey/lugar";
 		    ClientConfig config = new DefaultClientConfig();
 		    Client client = Client.create(config);
 		    WebResource service = client.resource(uri);
-		    String json = service.accept("application/json").get(String.class);
-		    System.out.println("Output as json: " + json);
+//		    String json = service.accept("application/json").get(String.class);
+//		    System.out.println("Output as json: " + json);
+		    service.accept("application/json").post(obj);
 	
 		    return "index";
 	}

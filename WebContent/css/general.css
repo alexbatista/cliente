@@ -63,10 +63,22 @@ ul li a:active {
     /*    margin: .2em 0;*/
 }
 
-
-
-
+#perfil,.cadastro{
+	display:inline-block;
+	
+}
 #perfil{
+	margin: 2em 4em;
 	min-width: 20em;
 	max-width: 25em;
+	
+}
+.cadastro{
+	margin-top:2em;
+	width: 70em;
+	font-size:1.5em;
+}
+
+.buttons{
+	margin:1em;
 }

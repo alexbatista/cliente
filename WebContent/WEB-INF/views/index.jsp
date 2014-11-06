@@ -292,6 +292,10 @@
 <!--     Modal -->
     <div class="remodal" data-remodal-id="modal">
     <h1>Login</h1>
+	    <div class="ui facebook button">
+		  <i class="facebook icon"></i>
+		  Facebook
+		</div>
     <p>Logue com o facebook ou com seu email</p>
     <br>
     <a class="remodal-cancel" href="#">Cancel</a>
