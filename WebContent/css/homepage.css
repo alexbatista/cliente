@@ -59,6 +59,13 @@ p a {
 
 /*rtl:ignore*/
 
+.bgParallax{
+	position:relative;
+	background-position: 50% 0;
+	background-repeat: repeat;
+	background-attachment: fixed;
+}
+
 .menu .right.menu > .mobile.item {
     display: none;
 }

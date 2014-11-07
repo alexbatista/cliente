@@ -3,43 +3,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="<c:url value="css/reset.css" />" />
-<link rel="stylesheet" type="text/css" href="<c:url value="css/semantic.min.css" />" />
-<link rel="stylesheet" type="text/css" href="<c:url value="css/general.css" />" />
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
-    <script src="<c:url value="javascript/semantic.min.js"/>"></script>
-<script type="text/javascript" src="<c:url value="javascript/homepage.js" />" ></script>
-
-<title>Journey - Explore o mundo</title>
-</head>
+<c:import url="head.jsp"></c:import>
 <body>
-    <header>
-	<img id="logo_small" alt="imagem" src="<c:url value="images/journey.png" />" />
-        <menu>
-            <ul>
-                <li><a href="">Inicio</a>
-                </li>
-                <li><a href="">Explore</a>
-                </li>
-                <li><a href="">Depoimentos</a>
-                </li>
-            </ul>
-            <form action="#" method="get">
-                <div class="ui icon input">
-	  				<input type="text" placeholder="Pesquisar">
-	  				<i class="inverted search icon"></i>
-				</div>
-            </form>
-        </menu>
-    </header>
+   <c:import url="cabecalho.jsp"></c:import>
     <div>
     <div id="perfil" class="ui primary segment">
     	<img class="circular ui image" src="<c:url value="images/weathered-face.jpg" />" />
    		<h1>Nome do usuário</h1>
     </div>
-    <form class="cadastro" action="resource" method="post" enctype="application/json">
+    <form class="cadastro" action="postLugar" method="post" enctype="application/json">
     	<div class="ui form">
 		  <div class="field">
 		    <label>Nome do Local:</label>
@@ -50,11 +22,10 @@
 		    <textarea name="descricao"></textarea>
  		  </div>
  		  <div class="ui selection dropdown">
-			  <input type="hidden" name="gender">
-			  <div class="default text">Gender</div>
+			  <input type="hidden" name="classificacao">
+			  <div class="default text">Classificação:</div>
 			  <i class="dropdown icon"></i>
-			  <div class="menu">
-			  	<div class="item active" data-value="0">-----</div>
+			  <div class="menu" >
 			    <div class="item" data-value="1">Péssimo</div>
 			    <div class="item" data-value="2">Ruim</div>
 			    <div class="item" data-value="3">Regular</div>

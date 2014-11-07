@@ -82,3 +82,26 @@ ul li a:active {
 .buttons{
 	margin:1em;
 }
+
+#listLugar{
+	margin-top:2em;
+	float:right;
+	font-size:1.3em;
+	width: 70%;
+}
+.item{
+	position: relative;
+}
+a.header{
+	font-size: 2em;
+	color:#abc;
+}
+.editButtons{
+	position:absolute;
+	right: 1em;
+	top:.5em;
+	float:right;
+}
+.editButtons button, button i{
+		background:none;
+}

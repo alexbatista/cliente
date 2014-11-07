@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-
 <head>
     <!-- Standard Meta -->
     <meta charset="utf-8" />
@@ -21,11 +20,11 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
     <script src="<c:url value="javascript/semantic.min.js"/>"></script>
     <script src="<c:url value="javascript/homepage.js" />" ></script>
+    <script src="<c:url value="javascript/parallax.js" />" ></script>
 	<script src="<c:url value="javascript/jquery.remodal.js" />" ></script>
 </head>
-
 <body id="home" class="remodal-bg">
-    <div class="ui  page grid masthead segment">
+    <div class="ui  page grid masthead segment bgParallax" data-speed="3">
         <div class="column">
             <div class=" secondary pointing ui menu">
                 <div class="right menu">
@@ -54,7 +53,7 @@
             <img src="<c:url value="images/journey.png"/>" class="image">
             <div class="ui hidden transition information">
                 <h1 class="ui inverted header">
-            Conheça o Mundo!
+            Planeje sua viagem!
         </h1>
                 <p>Com o Journey você pode ir além.</p>
                 <div class="large basic  animated fade ui button">

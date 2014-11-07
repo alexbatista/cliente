@@ -1,22 +1,21 @@
 package br.com.webservice.cliente.controller;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.GenericType;
+import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
+import com.sun.jersey.api.json.JSONConfiguration;
 
 import br.com.webservice.cliente.bean.Lugar;
 
@@ -28,34 +27,117 @@ public class SystemController {
 	public String execute(){
 		return "index";
 	}
-	
-	@RequestMapping("/registrar")
-	public String registrar(){
-		return "lugares";
-	}
-	
-	@RequestMapping("perfil")
+		
+	@RequestMapping("/cadastrar")
 	public String getPerfil(){
 		return "perfil";
 	}
+	@RequestMapping("/lugares")
+	public String getLugar(){
+		return "lugares";
+	}
 	
-	@RequestMapping("resource")
-	public String Resources(Lugar lugar) throws JSONException{
+	@RequestMapping("postLugar")
+	public String postLugar(Lugar lugar) throws JSONException{
+		
+			JSONObject obj = new JSONObject();
+			obj.put("id", lugar.getId());
+			obj.put("nome", lugar.getNome());
+			obj.put("latitude",111);
+			obj.put("longitude", 222);
+			obj.put("descricao",lugar.getDescricao());
+			obj.put("classificacao", lugar.getClassificacao());
+			
+			 String uri = "http://localhost:8080/journey/lugar";
+			    ClientConfig config = new DefaultClientConfig();
+			    config.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);     
+			    Client client = Client.create(config);
+			    WebResource service = client.resource(uri);
+			    ClientResponse response = service.accept("application/json").type("application/json").post(ClientResponse.class, obj.toString());	 
+            if (response.getStatus() != 200) {
+               return "perfil";
+            }
+		    return "index";
+	}
+	
+	@RequestMapping("putLugar")
+	public String updateLugar(Lugar lugar) throws JSONException{
 		
 		JSONObject obj = new JSONObject();
+		obj.put("id", lugar.getId());
 		obj.put("nome", lugar.getNome());
 		obj.put("latitude",111);
 		obj.put("longitude", 222);
+		obj.put("descricao",lugar.getDescricao());
+		obj.put("classificacao", lugar.getClassificacao());
 		
-		 String uri = "http://localhost:8080/journey/lugar";
+		 String uri = "http://localhost:8080/journey/lugar/"+lugar.getId();
 		    ClientConfig config = new DefaultClientConfig();
+		    config.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);     
 		    Client client = Client.create(config);
 		    WebResource service = client.resource(uri);
-//		    String json = service.accept("application/json").get(String.class);
-//		    System.out.println("Output as json: " + json);
-		    service.accept("application/json").post(obj);
+		    ClientResponse response = service.accept("application/json").type("application/json").put(ClientResponse.class, obj.toString());	 
+        if (response.getStatus() != 200) {
+           return "perfil";
+        }
+	    return "index";
+	}
 	
-		    return "index";
+	public Lugar getLugar(Lugar lu){
+		Lugar lugar = new Lugar();
+		
+		String uri = "http://localhost:8080/journey/lugar/"+lu.getId();
+	    ClientConfig config = new DefaultClientConfig();
+	    config.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);     
+	    Client client = Client.create(config);
+	    WebResource service = client.resource(uri);
+	    String json = service.accept("application/json").type("application/json").get(String.class);	 
+	    
+	    
+		try {
+			JSONObject obj = new JSONObject(json);
+			 lugar.setId(obj.getInt("id"));
+			 lugar.setNome(obj.getString("nome"));
+			 lugar.setLongitude(obj.getDouble("longitude"));
+			 lugar.setLatitude(obj.getDouble("latitude"));
+			 lugar.setClassificacao(obj.getInt("classificacao"));
+			 lugar.setDescricao(obj.getString("descricao"));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	   
+		return lugar;
+	}
+	
+	public List<Lugar> getLugares(){
+		String uri = "http://localhost:8080/journey/lugar";
+		 ClientConfig config = new DefaultClientConfig();
+		 Client client = Client.create(config);
+		 WebResource service = client.resource(uri);
+		 String json = service.accept("application/json").get(String.class);
+		 List<Lugar> lugares = new ArrayList<Lugar>();
+	
+		try {
+			
+			JSONArray array = new JSONArray(json);
+			
+			for(int i = 0; i < array.length(); i++){
+			JSONObject obj = array.getJSONObject(i);
+			Lugar lugar = new Lugar();
+			lugar.setId(obj.getInt("id"));
+			lugar.setNome(obj.getString("nome"));
+			lugar.setLongitude(obj.getDouble("longitude"));
+			lugar.setLatitude(obj.getDouble("latitude"));
+			lugar.setClassificacao(obj.getInt("classificacao"));
+			lugar.setDescricao(obj.getString("descricao"));
+			lugares.add(lugar);
+			}
+			
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return lugares;
+			
 	}
 	public static void main(String[] args) {
 		/*EntityManagerFactory factory = Persistence.createEntityManagerFactory("lugarDB"); 
@@ -68,12 +150,14 @@ public class SystemController {
 		em.persist(p); 
 		em.getTransaction().commit(); */
 		
-		 String uri = "http://localhost:8080/journey/lugar";
+	/*	String uri = "http://localhost:8080/journey/lugar";
 		 ClientConfig config = new DefaultClientConfig();
 		 Client client = Client.create(config);
 		 WebResource service = client.resource(uri);
 		 String json = service.accept("application/json").get(String.class);
-		 System.out.println("Output as json: " + json);
+		 System.out.println("Output as json: " + json);*/
+		
+
 		    
 		
 	}
