@@ -8,7 +8,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
@@ -32,10 +34,7 @@ public class SystemController {
 	public String getPerfil(){
 		return "perfil";
 	}
-	@RequestMapping("/lugares")
-	public String getLugar(){
-		return "lugares";
-	}
+
 	
 	@RequestMapping("postLugar")
 	public String postLugar(Lugar lugar) throws JSONException{
@@ -43,8 +42,8 @@ public class SystemController {
 			JSONObject obj = new JSONObject();
 			obj.put("id", lugar.getId());
 			obj.put("nome", lugar.getNome());
-			obj.put("latitude",111);
-			obj.put("longitude", 222);
+			obj.put("latitude",lugar.getLatitude());
+			obj.put("longitude", lugar.getLongitude());
 			obj.put("descricao",lugar.getDescricao());
 			obj.put("classificacao", lugar.getClassificacao());
 			
@@ -57,21 +56,31 @@ public class SystemController {
             if (response.getStatus() != 200) {
                return "perfil";
             }
-		    return "index";
+		    return "redirect:cadastrar";
 	}
 	
-	@RequestMapping("putLugar")
+	@RequestMapping("alterarLugar")
+	public String alterarLugar(int id, Model model){
+		Lugar place = new Lugar();
+		place.setId(id);
+		Lugar lugar = getLugar(place);
+		
+		model.addAttribute("lugar", lugar);
+		return "alterar";
+	}
+	
+	@RequestMapping("updateLugar")
 	public String updateLugar(Lugar lugar) throws JSONException{
 		
 		JSONObject obj = new JSONObject();
 		obj.put("id", lugar.getId());
 		obj.put("nome", lugar.getNome());
-		obj.put("latitude",111);
-		obj.put("longitude", 222);
+		obj.put("latitude",lugar.getLatitude());
+		obj.put("longitude", lugar.getLongitude());
 		obj.put("descricao",lugar.getDescricao());
 		obj.put("classificacao", lugar.getClassificacao());
 		
-		 String uri = "http://localhost:8080/journey/lugar/"+lugar.getId();
+		 String uri = "http://localhost:8080/journey/lugar/";
 		    ClientConfig config = new DefaultClientConfig();
 		    config.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);     
 		    Client client = Client.create(config);
@@ -80,7 +89,22 @@ public class SystemController {
         if (response.getStatus() != 200) {
            return "perfil";
         }
-	    return "index";
+	    return "redirect:lugares";
+	}
+	
+	@RequestMapping("deleteLugar")
+	public String deleteLugar(Lugar lugar){
+		
+			String uri = "http://localhost:8080/journey/lugar/"+lugar.getId();
+		    ClientConfig config = new DefaultClientConfig();
+		    config.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);     
+		    Client client = Client.create(config);
+		    WebResource service = client.resource(uri);
+		    ClientResponse response = service.accept("application/json").type("application/json").delete(ClientResponse.class);	 
+	    if (response.getStatus() != 200) {
+	       return "inicio";
+	    }
+	    return "forward:lugares";//redirect:lugares também funfa, redirect no lado cliente e forward no servidor
 	}
 	
 	public Lugar getLugar(Lugar lu){
@@ -100,8 +124,13 @@ public class SystemController {
 			 lugar.setNome(obj.getString("nome"));
 			 lugar.setLongitude(obj.getDouble("longitude"));
 			 lugar.setLatitude(obj.getDouble("latitude"));
+			 
+			 if(obj.getInt("classificacao") != 0)
 			 lugar.setClassificacao(obj.getInt("classificacao"));
+			 
+			 if(obj.getString("descricao") != null)
 			 lugar.setDescricao(obj.getString("descricao"));
+			 
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -109,7 +138,8 @@ public class SystemController {
 		return lugar;
 	}
 	
-	public List<Lugar> getLugares(){
+	@RequestMapping("lugares")
+	public String getLugares(Model model){
 		String uri = "http://localhost:8080/journey/lugar";
 		 ClientConfig config = new DefaultClientConfig();
 		 Client client = Client.create(config);
@@ -128,15 +158,22 @@ public class SystemController {
 			lugar.setNome(obj.getString("nome"));
 			lugar.setLongitude(obj.getDouble("longitude"));
 			lugar.setLatitude(obj.getDouble("latitude"));
+			
+			 if(obj.getInt("classificacao") != 0)
 			lugar.setClassificacao(obj.getInt("classificacao"));
+			
+			 if(obj.getString("descricao") != null)
 			lugar.setDescricao(obj.getString("descricao"));
+			 
 			lugares.add(lugar);
 			}
 			
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		return lugares;
+		model.addAttribute("lugares", lugares);
+		
+		return "lugares";
 			
 	}
 	public static void main(String[] args) {

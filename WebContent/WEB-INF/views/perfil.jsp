@@ -17,10 +17,14 @@
 		    <label>Nome do Local:</label>
 		    <input  name="nome" type="text">
 		  </div>
-		   <div class="field">
-		    <label>Descrição: </label>
-		    <textarea name="descricao"></textarea>
- 		  </div>
+		  <div class="field">
+		  	<label>Latitude:</label>
+		  	<input type="text" name="latitude" />
+		  </div>
+		  <div class="field">
+		  	<label>Longitude:</label>
+		  	<input type="text" name="longitude" />
+		  </div>
  		  <div class="ui selection dropdown">
 			  <input type="hidden" name="classificacao">
 			  <div class="default text">Classificação:</div>
@@ -33,6 +37,10 @@
 			    <div class="item" data-value="5">Ótimo</div> 
 			  </div>
 		</div>
+		 <div class="field">
+		    <label>Descrição: </label>
+		    <textarea name="descricao"></textarea>
+ 		  </div>
 		</div>
 		<div class="ui buttons">
 		  <input type="reset" value="cancelar" class="ui button" />

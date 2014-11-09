@@ -6,9 +6,9 @@
 	<img id="logo_small" alt="imagem" src="<c:url value="images/journey.png" />" />
         <menu>
             <ul>
-                <li><a href="">Inicio</a>
+                <li><a href="inicio">Inicio</a>
                 </li>
-                <li><a href="">Explore</a>
+                <li><a href="lugares">Explore</a>
                 </li>
                 <li><a href="">Depoimentos</a>
                 </li>

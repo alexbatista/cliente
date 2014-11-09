@@ -32,7 +32,7 @@
                         Menu
                         <i class="dropdown icon"></i>
                         <div class="menu">
-                            <a class="item">Lugares</a>
+                            <a href="lugares" class="item">Lugares</a>
                             <a class="item">Pessoas</a>
                             <a class="item">Top 10</a>
                         </div>
@@ -41,7 +41,7 @@
                         Explorar
                         <i class="dropdown icon"></i>
                         <div class="menu">
-                            <a class="item">Lugares</a>
+                            <a href="lugares" class="item">Lugares</a>
                             <a class="item">Pessoas</a>
                             <a class="item">Top 10</a>
                         </div>

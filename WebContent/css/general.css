@@ -68,14 +68,17 @@ ul li a:active {
 	
 }
 #perfil{
-	margin: 2em 4em;
-	min-width: 20em;
-	max-width: 25em;
-	
+	float:left;
+	margin: 3em 2em;
+	padding:3em;
+	width: 15%;	
 }
+
 .cadastro{
+	float:right;
 	margin-top:2em;
-	width: 70em;
+	margin-right: 2em;
+	width: 74%;
 	font-size:1.5em;
 }
 
@@ -87,7 +90,7 @@ ul li a:active {
 	margin-top:2em;
 	float:right;
 	font-size:1.3em;
-	width: 70%;
+	width: 74%;
 }
 .item{
 	position: relative;
@@ -101,6 +104,9 @@ a.header{
 	right: 1em;
 	top:.5em;
 	float:right;
+}
+.editButtons > a{
+	list-style: none;
 }
 .editButtons button, button i{
 		background:none;
