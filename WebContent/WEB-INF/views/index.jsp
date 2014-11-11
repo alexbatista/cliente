@@ -33,8 +33,6 @@
                         <i class="dropdown icon"></i>
                         <div class="menu">
                             <a href="lugares" class="item">Lugares</a>
-                            <a class="item">Pessoas</a>
-                            <a class="item">Top 10</a>
                         </div>
                     </div>
                     <div class="ui dropdown link item">
@@ -42,8 +40,6 @@
                         <i class="dropdown icon"></i>
                         <div class="menu">
                             <a href="lugares" class="item">Lugares</a>
-                            <a class="item">Pessoas</a>
-                            <a class="item">Top 10</a>
                         </div>
                     </div>
                     <a class="item">Comunidade</a>
@@ -265,9 +261,7 @@
                 <div class="column">
                     <div class="ui header">Explorar</div>
                     <div class="ui inverted link list">
-                        <a class="item">Pessoas</a>
-                        <a class="item">Lugares</a>
-                        <a class="item">Top 10</a>
+                        <a href="lugares" class="item">Lugares</a>
                     </div>
                 </div>
                 <div class="column">

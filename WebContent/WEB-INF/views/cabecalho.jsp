@@ -10,7 +10,7 @@
                 </li>
                 <li><a href="lugares">Explore</a>
                 </li>
-                <li><a href="">Depoimentos</a>
+                <li><a href="cadastrar">Cadastrar Lugar</a>
                 </li>
             </ul>
             <form action="#" method="get">
