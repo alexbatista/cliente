@@ -5,6 +5,7 @@
 <html>
 <c:import url="head.jsp"></c:import>
 <body>
+	<c:import url="faceScript.jsp"></c:import>
 	<script
 	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
 	</script>

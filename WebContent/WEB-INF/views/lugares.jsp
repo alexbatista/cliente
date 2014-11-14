@@ -6,6 +6,8 @@
         <c:import url="head.jsp"></c:import>
 
         <body>
+        	<c:import url="faceScript.jsp"></c:import>
+        
             <%-- <jsp:useBean id="controller" class="br.com.webservice.cliente.controller.SystemController"></jsp:useBean>--%>
                 <c:import url="cabecalho.jsp"></c:import>
                 <div id="perfil" class="ui primary segment">
@@ -18,8 +20,6 @@
                             <i class="map marker icon"></i>
                             <div class="content">
                                 <a class="header">${lugar.nome}</a>
-                                <div class="description">${lugar.latitude}</div>
-                                <div class="description">${lugar.longitude}</div>
                                 <div class="description">Classificação:
                                     <c:choose>
                                         <c:when test="${lugar.classificacao == '1'}">Péssimo</c:when>
@@ -33,8 +33,8 @@
                                 <input type="hidden" name="id" value="${lugar.id}" />
                             </div>
                             <div class="editButtons">
+								<a href="alterarLugar?id=${lugar.id}"><i class="exchange big icon"></i></a>
                                 <a href="deleteLugar?id=${lugar.id}"><i class="trash big icon"></i></a>
-                                <a href="alterarLugar?id=${lugar.id}"><i class="exchange big icon"></i></a>
                             </div>
                         </div>
                     </c:forEach>

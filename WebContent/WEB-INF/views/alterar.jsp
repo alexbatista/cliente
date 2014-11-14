@@ -5,6 +5,8 @@
 <html>
 <c:import url="head.jsp"></c:import>
 <body>
+	<c:import url="faceScript.jsp"></c:import>
+
 		<script
 	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
 	</script>
@@ -58,7 +60,7 @@
     <div>
     <div id="perfil" class="ui primary segment">
     	<img class="circular ui image" src="<c:url value="images/weathered-face.jpg" />" />
-   		<h1>Nome do usuário</h1>
+   		<h1>Nome do Usuário</h1>
     </div>
     <form class="cadastro" method="put" action="updateLugar">
     	<div class="ui form">

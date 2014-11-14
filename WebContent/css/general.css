@@ -107,10 +107,10 @@ a.header{
 }
 .editButtons > a{
 	list-style: none;
+	text-decoration: none;
 }
-.editButtons button, button i{
-		background:none;
-}
+
+
 #googleMap{
 	height:50em;
 	width:100%;

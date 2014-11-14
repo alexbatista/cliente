@@ -34,6 +34,11 @@ public class SystemController {
 	public String getPerfil(){
 		return "perfil";
 	}
+	
+	@RequestMapping("/facebook")
+	public String inicio(){
+		return "facebook";
+	}
 
 	
 	@RequestMapping("postLugar")
