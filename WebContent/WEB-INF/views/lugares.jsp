@@ -11,8 +11,8 @@
             <%-- <jsp:useBean id="controller" class="br.com.webservice.cliente.controller.SystemController"></jsp:useBean>--%>
                 <c:import url="cabecalho.jsp"></c:import>
                 <div id="perfil" class="ui primary segment">
-                    <img class="circular ui image" src="<c:url value=" images/weathered-face.jpg " />" />
-                    <h1>Nome do usuário</h1>
+                    <img class="circular ui image" src="${usuarioLogado.foto}" />
+                    <h1>${usuarioLogado.nome}</h1>
                 </div>
                 <div id="listLugar" class="ui divided list">
                     <c:forEach var="lugar" items="${lugares}">

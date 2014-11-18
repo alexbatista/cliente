@@ -24,7 +24,7 @@
 	<script src="<c:url value="javascript/jquery.remodal.js" />" ></script>
 </head>
 <body id="home" class="remodal-bg">
-	<c:import url="faceScript.jsp"></c:import>
+<%-- 	<c:import url="faceScript.jsp"></c:import> --%>
     <div class="ui  page grid masthead segment bgParallax" data-speed="3">
         <div class="column">
             <div class=" secondary pointing ui menu">
@@ -286,15 +286,75 @@
 <!--     Modal -->
     <div class="remodal" data-remodal-id="modal">
     <h1>Login</h1>
-<!-- 	    <div class="ui facebook button"> -->
-<!-- 		  <i class="facebook icon"></i> -->
-<!-- 		  Facebook -->
-<!-- 		</div> -->
+	<form id="fb_login_form" action="efetuaLogin">
  <p>Logue com o facebook ou com seu email</p>
-<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="true"></div> 
+	<a href="#" onclick="facebookLogin(); return false;" class="ui facebook button">
+	  <i class="facebook icon"></i>
+	  Facebook
+	</a>
     <br>
     <a class="remodal-cancel" href="#">Cancel</a>
     <a class="remodal-confirm" href="#">OK</a>
+    </form>
+    <script>
+    window.fbAsyncInit = function() {
+	    FB.init({
+	      appId      : '891070540925932',
+	      xfbml      : true,
+	      version    : 'v2.2'
+	    });
+	    
+	    FB.Event.subscribe('auth.authResponseChange', function(response) {
+            //Se o usuário estiver logado no facebook e já deu as permissões para seu aplicativo o status será connected
+            if (response.status === 'connected') {
+                // Executa a função usuarioConectado().
+                usuarioConectado();
+            } 
+        });
+	  };
+	  (function(d, s, id){
+		     var js, fjs = d.getElementsByTagName(s)[0];
+		     if (d.getElementById(id)) {return;}
+		     js = d.createElement(s); js.id = id;
+		     js.src = "//connect.facebook.net/en_US/sdk.js";
+		     fjs.parentNode.insertBefore(js, fjs);
+		   }(document, 'script', 'facebook-jssdk'));
+		  
+	  
+	function facebookLogin() {
+      FB.getLoginStatus(function(response) {
+        
+         if (response.status === 'connected') {
+        	 alert("agora está conectado");
+        	 var uid = response.authResponse.userID;
+        	    var accessToken = response.authResponse.accessToken;
+            alert(accessToken);
+            alert(uid);
+        
+                FB.api('/me', function(response) {
+                 alert('Bem-vindo, ' + response.name + '.');
+                });
+                $('#fb_login_form').submit();
+                
+        	} 
+        else {
+         FB.login(function(response) {            
+        	 $('#fb_login_form').submit();
+          });
+         
+        }
+        
+        var inst = $.remodal.lookup[$('[data-remodal-id=modal]').data('remodal')];
+        inst.close();
+      },true);
+	}
+	
+	function facebookLogout(){
+		FB.logout(function(response) {
+		});
+	}
+      
+</script>
 </div>
 </body>
 

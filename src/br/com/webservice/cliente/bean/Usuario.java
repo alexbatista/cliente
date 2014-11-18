@@ -2,13 +2,22 @@ package br.com.webservice.cliente.bean;
 
 public class Usuario {
 
-	private int id;
+	private Long idUser;
 	private String nome;
-	public int getId() {
-		return id;
+	private String foto;
+	
+
+	public Long getIdUser() {
+		return idUser;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setIdUser(Long idUser) {
+		this.idUser = idUser;
+	}
+	public String getFoto() {
+		return foto;
+	}
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 	public String getNome() {
 		return nome;

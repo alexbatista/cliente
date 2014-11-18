@@ -37,12 +37,13 @@
                   '<br>Sexo: '+response.gender +
                   '<br>ID: '+response.id 
               );*/
-              $("#info").text("Olá, "+response.name);
-              $("#perfil h1").text(response.name);
-              $('#loginSup').css('display','none');
-              $('#perfil').html('<img class=\"circular ui image\" src="https://graph.facebook.com/'+response.id+'/picture" alt="'+response.name+'" />');
+              var image = "https://graph.facebook.com/"+response.id+"/picture";
+              $("#nome").val(response.name);
+              $("#idUser").val(response.id);
+              $("#foto").attr("src",image);
               var inst = $.remodal.lookup[$('[data-remodal-id=modal]').data('remodal')];
               inst.close();
+              $('#login').trigger('submit');
           });
       }
 

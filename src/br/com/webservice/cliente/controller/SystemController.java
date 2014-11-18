@@ -35,11 +35,6 @@ public class SystemController {
 		return "perfil";
 	}
 	
-	@RequestMapping("/facebook")
-	public String inicio(){
-		return "facebook";
-	}
-
 	
 	@RequestMapping("postLugar")
 	public String postLugar(Lugar lugar) throws JSONException{
